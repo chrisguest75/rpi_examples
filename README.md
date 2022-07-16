@@ -2,8 +2,24 @@
 
 [![Repository](https://skillicons.dev/icons?i=linux,vscode)](https://skillicons.dev)
 
-A repository for Raspberry PI examples 
+A repository for Raspberry PI examples  
 
+## Prerequisites
+
+Configure the following tools:
+
+1. [pyenv-installer](https://github.com/pyenv/pyenv-installer)
+1. [Pyenv](https://github.com/pyenv/pyenv)
+1. [Intro to Pyenv](https://realpython.com/intro-to-pyenv/)
+1. [Pipenv](https://realpython.com/pipenv-guide/)
+
+```sh
+sudo apt install libreadline-dev  
+sudo apt install libbz2-dev  
+sudo apt install libssl-dev   
+sudo apt-get install libsqlite3-dev  
+pyenv install 3.10.5  
+```
 
 ## 01 - Webcam
 

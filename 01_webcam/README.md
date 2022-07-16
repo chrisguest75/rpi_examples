@@ -7,12 +7,19 @@ Demonstrate how to get a webcam working.
 Use pygame to capture from the camera
 
 ```sh
+pyenv versions   
+pyenv install --list 
+pyenv install 3.9.13
+pyenv global 3.9.13
+
 export PIPENV_VENV_IN_PROJECT=1
 pipenv install
 
 pipenv shell
 
 code .
+
+python ./main.py
 ```
 
 ## Cleanup
