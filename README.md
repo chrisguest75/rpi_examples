@@ -19,6 +19,10 @@ sudo apt install libbz2-dev
 sudo apt install libssl-dev   
 sudo apt-get install libsqlite3-dev  
 pyenv install 3.10.5  
+
+export PYENV_ROOT="$HOME/.pyenv"
+command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
 ```
 
 ## 01 - Webcam
