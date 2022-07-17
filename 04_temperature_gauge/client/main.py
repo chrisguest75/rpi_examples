@@ -1,4 +1,10 @@
 #!/usr/bin/env python3
+#
+# TODO:
+#
+# Load config 
+# Post values to the prometheus server 
+# 
 
 import rainbowhat as rh
 import time

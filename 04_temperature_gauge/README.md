@@ -6,7 +6,7 @@ TODO:
 
 * Build an app, reads temperature, posts it to the gateway.
 * Create a grafana dashboard 
-* App should also show temperature on segment
+* 
 * Dockerise it
 * Mermaid Diagram 
 
