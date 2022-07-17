@@ -28,7 +28,7 @@ docker compose --profile prometheus up -d
 
 ```sh
 # Check scrape configuration 
-open http://localhost:9090
+xdg-open http://localhost:9090
 ```
 
 ```sh
@@ -44,6 +44,9 @@ open http://localhost:9091
 ## PromQL   
 
 ```js
+// list all the metrics
+{__name__!=""}
+
 // graph the metric
 {__name__="some_metric"}
 ```
