@@ -15,6 +15,8 @@ TODO:
 ```sh
 # install the libs on the device.
 curl https://get.pimoroni.com/rainbowhat | bash
+Note: Rainbow HAT requires SPI communication
+Note: Rainbow HAT requires I2C communication
 ```
 
 ## Start the services
@@ -39,6 +41,8 @@ xdg-open http://localhost:9090
 ```sh
 # Check pushgateway configuration 
 open http://localhost:9091
+# check metrics appear
+open http://localhost:9091/metrics
 ```
 
 ## PromQL   
@@ -70,5 +74,3 @@ https://learn.pimoroni.com/article/getting-started-with-rainbow-hat-in-python
 
 
 
-Note: Rainbow HAT requires SPI communication
-Note: Rainbow HAT requires I2C communication
