@@ -1,0 +1,52 @@
+version: "3.7"
+services:
+    prometheus:
+        image: prom/prometheus
+        ports:
+            - "9090:9090"  
+        volumes:
+            - "prometheus-data-volume:/prometheus"
+            - "./server/prometheus.yml:/etc/prometheus/prometheus.yml"  
+            - "./server/custom-targets.json:/etc/prometheus/custom-targets.json"                                
+        deploy:
+            restart_policy:
+                condition: on-failure
+        networks:
+            - overlay                
+        profiles: [prometheus]    
+
+    pushgateway:
+        image: prom/pushgateway
+        ports:
+            - "9091:9091"                                
+        deploy:
+            restart_policy:
+                condition: on-failure
+        networks:
+            - overlay                
+        profiles: [prometheus]            
+
+    grafana:
+        image: grafana/grafana
+        ports:
+            - "3000:3000"    
+        volumes:
+            - ./provisioning:/etc/grafana/provisioning            
+        deploy:
+            restart_policy:
+                condition: on-failure
+        networks:
+            - overlay                
+
+    # debug:
+    #     image: ubuntu:18.04
+    #     entrypoint: ['sleep', '10000']
+    #     deploy:
+    #         restart_policy:
+    #             condition: on-failure
+
+networks:
+    overlay:        
+
+volumes:
+    prometheus-data-volume:
