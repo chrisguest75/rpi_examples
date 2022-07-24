@@ -23,8 +23,11 @@ pyenv install 3.10.5
 
 ## 01 - Webcam
 
-Demonstrate how to get a webcam working.   
-Steps [README.md](./01_webcam/README.md) 
+Demonstrate how to get a webcam working.  
+Steps [README.md](./01_webcam/README.md)  
 
+## 04 - Temperature Guage
 
+Demonstrates a temperature gauge running on a RPI with UnicornHat.  
+Steps [README.md](./04_temperature_gauge/README.md)  
 

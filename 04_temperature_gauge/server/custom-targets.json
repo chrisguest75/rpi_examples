@@ -1,0 +1,10 @@
+[
+    {
+      "targets": [
+        "pushgateway:9091"
+      ],
+      "labels": {
+        "source_scrape": "pushgateway"
+      }
+    }
+  ]
