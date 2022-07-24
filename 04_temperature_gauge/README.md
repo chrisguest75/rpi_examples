@@ -4,11 +4,10 @@ Demonstrates a temperature gauge.
 
 TODO:
 
-* Build an app, reads temperature, posts it to the gateway.
-* Create a grafana dashboard 
-* 
-* Dockerise it
-* Mermaid Diagram 
+* Build an app, reads temperature, posts it to the gateway.  
+* Create a grafana dashboard  
+* Dockerise it  
+* Mermaid Diagram  
 
 ## Prepare the device
 
@@ -45,7 +44,7 @@ open http://localhost:9091
 open http://localhost:9091/metrics
 ```
 
-## PromQL   
+## PromQL
 
 ```js
 // list all the metrics
@@ -53,6 +52,12 @@ open http://localhost:9091/metrics
 
 // graph the metric
 {__name__="some_metric"}
+```
+
+## Grafana
+
+```sh
+open http://localhost:3000
 ```
 
 ## Cleanup
