@@ -1,6 +1,6 @@
 # README
 
-Demonstrates a temperature gauge.  
+Demonstrates a temperature gauge running on a RPI with UnicornHat.  
 
 TODO:
 
@@ -67,7 +67,6 @@ open http://localhost:3000
 docker compose --profile prometheus down --volumes
 ```
 
-
 ## Resources
 
 * Pushgateway docs [here](https://github.com/prometheus/pushgateway/blob/master/README.md)  
@@ -76,6 +75,4 @@ docker compose --profile prometheus down --volumes
 
 
 https://learn.pimoroni.com/article/getting-started-with-rainbow-hat-in-python
-
-
 
