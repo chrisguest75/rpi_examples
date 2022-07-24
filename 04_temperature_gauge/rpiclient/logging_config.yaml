@@ -12,6 +12,10 @@ handlers:
     level: DEBUG
     stream: ext://sys.stdout
     formatter: json
-# loggers:
-#   py_wordament_helper.wordament_helper:
-#     level: DEBUG    
+loggers:
+  requests.packages.urllib3:
+    level: DEBUG    
+  rpiclient:
+    level: DEBUG  
+  rpiclient.send:
+    level: DEBUG    

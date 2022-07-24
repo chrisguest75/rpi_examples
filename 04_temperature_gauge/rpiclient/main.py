@@ -5,6 +5,7 @@ A skeleton OpenApi v2 interface and service.  Useful for using with Google Endpo
 
 import argparse
 import io
+from ipaddress import ip_address
 import logging
 import logging.config
 import os
@@ -12,6 +13,10 @@ import sys
 import traceback
 import ptvsd
 import yaml
+import platform
+import random
+import time
+from send import send
 
 def log_uncaught_exceptions(exc_type, exc_value, exc_traceback):
     if issubclass(exc_type, KeyboardInterrupt):
@@ -67,6 +72,20 @@ if __name__ == "__main__":
     base_url = args.prometheus 
     if 'PROMETHEUS' in os.environ:
         base_url = os.environ['PROMETHEUS']
+
+    hostname = platform.node()
+    ip = "192.168.10.1"
+    labels = {
+        "hostname": hostname,
+        "ip": ip,
+    }
+    print(labels)
+    send = send("http://0.0.0.0:9091", labels)
+
+    while True:
+        send.send("temperature", random.random() * 100.0)
+        send.send("pressure", random.random() * 1000.0)
+        time.sleep(2)
 
     print(f"Exit {__name__}")
     exit(0)

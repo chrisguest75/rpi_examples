@@ -14,6 +14,8 @@ COPY ./Pipfile.lock /workbench/Pipfile.lock
 RUN pipenv install --deploy --system --dev
 
 COPY ./main.py /workbench/main.py
+COPY ./sensors.py /workbench/sensors.py
+COPY ./send.py /workbench/send.py
 
 # set to no debugger.
 ENV SERVER_URL="http://0.0.0.0:8000/api"

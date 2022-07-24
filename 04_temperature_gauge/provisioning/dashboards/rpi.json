@@ -271,7 +271,7 @@
       "type": "timeseries"
     }
   ],
-  "refresh": false,
+  "refresh": "5s",
   "schemaVersion": 36,
   "style": "dark",
   "tags": [],
@@ -286,6 +286,6 @@
   "timezone": "",
   "title": "House",
   "uid": "Glf3vXRVz",
-  "version": 5,
+  "version": 2,
   "weekStart": ""
 }
