@@ -7,6 +7,7 @@ name = "pypi"
 ptvsd = "*"
 python-json-logger = "*"
 requests = "*"
+pyyaml = "*"
 
 [dev-packages]
 flake8 = "*"

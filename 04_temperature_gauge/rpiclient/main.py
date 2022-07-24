@@ -11,6 +11,7 @@ import os
 import sys
 import traceback
 import ptvsd
+import yaml
 
 def log_uncaught_exceptions(exc_type, exc_value, exc_traceback):
     if issubclass(exc_type, KeyboardInterrupt):
@@ -67,4 +68,5 @@ if __name__ == "__main__":
     if 'PROMETHEUS' in os.environ:
         base_url = os.environ['PROMETHEUS']
 
+    print(f"Exit {__name__}")
     exit(0)
