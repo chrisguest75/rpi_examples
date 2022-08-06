@@ -11,11 +11,14 @@ pipenv shell
 python ./main.py
 
 python ./main.py --prometheus "http://0.0.0.0:8080"
+python ./main.py --prometheus "http://0.0.0.0:8080" --plugin "plugin_random" --nic "en0"
 python ./main.py --prometheus "http://0.0.0.0:8080" --plugin "plugin_rainbo
 what"
 ```
 
 ## Docker
+
+Build native.  
 
 ```sh
 # build docker container
@@ -23,6 +26,12 @@ docker build -t temperature .
 
 # run docker container
 docker run -it temperature python3 -u ./main.py --prometheus "http://host.docker.internal:8080" --plugin "plugin_random" --nic "eth0"
+```
+
+Build target arm64  
+
+```sh
+docker buildx build --platform linux/arm64 -t temperature_arm64 -f ./Dockerfile .
 ```
 
 ## Created
