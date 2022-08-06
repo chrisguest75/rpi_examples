@@ -11,6 +11,18 @@ pipenv shell
 python ./main.py
 
 python ./main.py --prometheus "http://0.0.0.0:8080"
+python ./main.py --prometheus "http://0.0.0.0:8080" --plugin "plugin_rainbo
+what"
+```
+
+## Docker
+
+```sh
+# build docker container
+docker build -t temperature .  
+
+# run docker container
+docker run -it temperature python3 -u ./main.py --prometheus "http://host.docker.internal:8080" --plugin "plugin_random" --nic "eth0"
 ```
 
 ## Created
@@ -29,8 +41,9 @@ pipenv install --dev flake8
 
 ## Resources
 
-https://github.com/chrisguest75/wordament_solver_service
-https://github.com/chrisguest75/py-wordament-helper
+* pydron/ifaddr package [here](https://github.com/pydron/ifaddr)
+* chrisguest75/wordament_solver_service [here](https://github.com/chrisguest75/wordament_solver_service)
+* chrisguest75/py-wordament-helper [here](https://github.com/chrisguest75/py-wordament-helper)
+
 https://github.com/chrisguest75/docker_examples/tree/master/56_pyenv_versions
 
-https://github.com/pydron/ifaddr

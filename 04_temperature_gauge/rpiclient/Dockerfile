@@ -1,4 +1,4 @@
-FROM python:3.9.2-buster
+FROM python:3.10.6-bullseye
 
 RUN pip install pipenv
 
@@ -8,14 +8,13 @@ RUN addgroup --system --gid $GROUPID appuser
 RUN adduser --system --uid $USERID --gid $GROUPID appuser
 
 WORKDIR /workbench
+COPY ./logging_config.yaml /workbench/
 COPY ./Pipfile /workbench/Pipfile
 COPY ./Pipfile.lock /workbench/Pipfile.lock 
 
 RUN pipenv install --deploy --system --dev
 
-COPY ./main.py /workbench/main.py
-COPY ./sensors.py /workbench/sensors.py
-COPY ./send.py /workbench/send.py
+COPY ./*.py /workbench/
 
 # set to no debugger.
 ENV SERVER_URL="http://0.0.0.0:8000/api"

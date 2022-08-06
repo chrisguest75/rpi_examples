@@ -5,7 +5,6 @@ A skeleton OpenApi v2 interface and service.  Useful for using with Google Endpo
 
 import argparse
 import io
-from ipaddress import ip_address
 import logging
 import logging.config
 import os
@@ -14,7 +13,6 @@ import traceback
 import ptvsd
 import yaml
 import platform
-import random
 import time
 from send import send
 from ip import get_ip_address
@@ -47,6 +45,7 @@ if __name__ == "__main__":
     parser.add_argument('--prometheus', default="http://0.0.0.0:9090", dest='prometheus', type=str, help='')
     parser.add_argument('--nic', default="en0", dest='nic', type=str, help='')
     parser.add_argument('--placement', default="frontroom", dest='placement', type=str, help='')
+    parser.add_argument('--plugin', default="plugin_random", dest='plugin', type=str, help='')
 
     args = parser.parse_args()
 
@@ -87,12 +86,19 @@ if __name__ == "__main__":
     }
     logger.info(labels)
     send = send(args.prometheus, labels)
-    #send = send("http://0.0.0.0:9091", labels)
+
+    if args.plugin == "plugin_random":
+        from plugin_random import plugin_random
+        sensors = plugin_random()
+    else:        
+        from plugin_rainbowhat import plugin_rainbowhat
+        sensors = plugin_rainbowhat()
 
     while True:
-        temperature = random.random() * 100.0
+        readings = sensors.retrieve_values()
+        temperature = readings["temperature"]
+        pressure = readings["pressure"]
         send.send("temperature", f"{temperature:.2f}")
-        pressure = random.random() * 1000.0
         send.send("pressure", f"{pressure:.2f}" )
         time.sleep(2)
 

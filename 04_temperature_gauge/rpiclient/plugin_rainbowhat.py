@@ -3,10 +3,11 @@ import rainbowhat as rh
 import time
 import colorsys
 
-logger = logging.getLogger('rpiclient.sensors')
+logger = logging.getLogger('rpiclient.plugins')
 
-class sensors():
+class plugin_rainbowhat():
     def __init__(self):
+        logger.info("Initialising plugin_rainbowhat")
         rh.rainbow.clear()
 
     def retrieve_values(self):
