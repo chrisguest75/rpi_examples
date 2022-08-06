@@ -24,7 +24,12 @@ To start up Prometheus and Grafana
 
 ```sh
 # start the server
-docker compose --profile prometheus up -d
+docker compose -f ./docker-compose.yaml -f ./docker-compose.mitmreverseproxy.yaml up -d --build --force-recreate
+```
+
+```sh
+# Check scrape configuration 
+open http://localhost:8081
 ```
 
 ```sh
@@ -35,6 +40,11 @@ xdg-open http://localhost:9090
 ```sh
 # load some metrcis into prometheus
 ./load_metrics.sh
+# load through mitm proxy
+./load_metrics.sh 8080
+
+# check mitm logs
+docker compose logs mitmproxy
 ```
 
 ```sh
@@ -64,7 +74,7 @@ open http://localhost:3000
 
 ```sh
 # stop the server
-docker compose --profile prometheus down --volumes
+docker compose -f ./docker-compose.yaml -f ./docker-compose.mitmreverseproxy.yaml down --volumes
 ```
 
 ## Resources
@@ -73,6 +83,6 @@ docker compose --profile prometheus down --volumes
 * Pushgateway repo [here](https://github.com/prometheus/pushgateway)
 * Pushgateway dockerhub [here](https://hub.docker.com/r/prom/pushgateway)
 
+* Provision Grafana [here](https://grafana.com/docs/grafana/latest/administration/provisioning/)
 
-https://learn.pimoroni.com/article/getting-started-with-rainbow-hat-in-python
-
+* Getting Started with Rainbow HAT [here](https://learn.pimoroni.com/article/getting-started-with-rainbow-hat-in-python)

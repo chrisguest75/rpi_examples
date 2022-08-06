@@ -16,6 +16,11 @@ readonly SCRIPT_DIR=$(dirname "$SCRIPT_FULL_PATH")
 
 mode=''
 echo "Press (s) for show, (d) for delete or (q) to quit"
+# default prometheus port
+PORT=9091
+if [[ $1 -ne "" ]]; then
+    PORT=$1
+fi
 
 while true; do 
     # Check for keypress *waiting very briefly.
@@ -48,12 +53,12 @@ while true; do
         ;;       
         d)
             echo "Deleting..."
-            curl -X DELETE http://0.0.0.0:9091/metrics/job/rpi
+            curl -X DELETE http://0.0.0.0:${PORT}/metrics/job/rpi
         ;;       
     esac
 
     # write metrics
-    echo "temperature $temperature" | curl --data-binary @- http://0.0.0.0:9091/metrics/job/rpi/instance/$(hostname)/ip/$(ipconfig getifaddr en0)
-    echo "pressure $pressure" | curl --data-binary @- http://0.0.0.0:9091/metrics/job/rpi/instance/$(hostname)/ip/$(ipconfig getifaddr en0)
+    echo "temperature $temperature" | curl --data-binary @- http://0.0.0.0:${PORT}/metrics/job/rpi/instance/$(hostname)/ip/$(ipconfig getifaddr en0)
+    echo "pressure $pressure" | curl --data-binary @- http://0.0.0.0:${PORT}/metrics/job/rpi/instance/$(hostname)/ip/$(ipconfig getifaddr en0)
     sleep 2
 done
