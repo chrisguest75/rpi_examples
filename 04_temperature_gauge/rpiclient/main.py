@@ -43,7 +43,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description='Temperature Monitor')
     parser.add_argument('--debugger', dest='debugger', action='store_true')
     parser.add_argument('--wait', dest='wait', action='store_true')
-    parser.add_argument('--prometheus', default="0.0.0.0:9000", dest='prometheus', type=str, help='')
+    parser.add_argument('--prometheus', default="http://0.0.0.0:9090", dest='prometheus', type=str, help='')
     args = parser.parse_args()
 
     debugger = False
@@ -80,11 +80,14 @@ if __name__ == "__main__":
         "ip": ip,
     }
     print(labels)
-    send = send("http://0.0.0.0:9091", labels)
+    send = send(args.prometheus, labels)
+    #send = send("http://0.0.0.0:9091", labels)
 
     while True:
-        send.send("temperature", random.random() * 100.0)
-        send.send("pressure", random.random() * 1000.0)
+        temperature = random.random() * 100.0
+        send.send("temperature", f"{temperature:.2f}")
+        pressure = random.random() * 1000.0
+        send.send("pressure", f"{pressure:.2f}" )
         time.sleep(2)
 
     print(f"Exit {__name__}")

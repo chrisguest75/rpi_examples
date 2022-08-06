@@ -10,15 +10,20 @@ class send():
         self.labels = labels
 
     def send(self, name, value):
-        metric = f"{name} {value}"
-        url = f"{self.server}/metrics/job/rpi"
+        metric = f"{name} {value}\n"
+
+        labels = ""
+        for key in self.labels:
+            labels += f"/{key}/{self.labels[key]}"
+
+        url = f"{self.server}/metrics/job/rpi{labels}"
         logger.info(f"metric {metric} url {url}")
 
         response = requests.post(url, data=metric, headers={'Content-Type': 'application/octet-stream'})
         if response.status_code != 200:
-            print(response)
+            print(f"{response.reason} {response.text}")
         else:
-            print(response)
+            print(f"{response.reason} {response.text}")
 
 
 #http://0.0.0.0:9091/metrics/job/rpi/instance/$(hostname)/ip/$(ipconfig getifaddr en0)

@@ -2,6 +2,18 @@
 
 Create a client that uses RPI unicornhat and sends data to prometheus.
 
+## Start
+
+```sh
+pyenv local
+pipenv install
+pipenv shell
+python ./main.py
+
+python ./main.py --prometheus "http://0.0.0.0:8080"
+```
+
+## Created
 
 ```sh
 export PIPENV_VENV_IN_PROJECT=1
