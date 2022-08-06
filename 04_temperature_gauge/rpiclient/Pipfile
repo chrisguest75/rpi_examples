@@ -8,6 +8,7 @@ ptvsd = "*"
 python-json-logger = "*"
 requests = "*"
 pyyaml = "*"
+ifaddr = "*"
 
 [dev-packages]
 flake8 = "*"

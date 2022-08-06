@@ -32,3 +32,5 @@ pipenv install --dev flake8
 https://github.com/chrisguest75/wordament_solver_service
 https://github.com/chrisguest75/py-wordament-helper
 https://github.com/chrisguest75/docker_examples/tree/master/56_pyenv_versions
+
+https://github.com/pydron/ifaddr

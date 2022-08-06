@@ -17,6 +17,7 @@ import platform
 import random
 import time
 from send import send
+from ip import get_ip_address
 
 def log_uncaught_exceptions(exc_type, exc_value, exc_traceback):
     if issubclass(exc_type, KeyboardInterrupt):
@@ -44,6 +45,9 @@ if __name__ == "__main__":
     parser.add_argument('--debugger', dest='debugger', action='store_true')
     parser.add_argument('--wait', dest='wait', action='store_true')
     parser.add_argument('--prometheus', default="http://0.0.0.0:9090", dest='prometheus', type=str, help='')
+    parser.add_argument('--nic', default="en0", dest='nic', type=str, help='')
+    parser.add_argument('--placement', default="frontroom", dest='placement', type=str, help='')
+
     args = parser.parse_args()
 
     debugger = False
@@ -74,12 +78,14 @@ if __name__ == "__main__":
         base_url = os.environ['PROMETHEUS']
 
     hostname = platform.node()
-    ip = "192.168.10.1"
+    ip = get_ip_address(args.nic)  
+    placement = args.placement  
     labels = {
         "hostname": hostname,
         "ip": ip,
+        "placement": placement,        
     }
-    print(labels)
+    logger.info(labels)
     send = send(args.prometheus, labels)
     #send = send("http://0.0.0.0:9091", labels)
 
