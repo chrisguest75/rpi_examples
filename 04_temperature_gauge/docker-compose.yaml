@@ -1,7 +1,7 @@
 version: "3.7"
 services:
     prometheus:
-        image: prom/prometheus
+        image: prom/prometheus:v2.38.0
         ports:
             - "9090:9090"  
         volumes:
@@ -15,7 +15,7 @@ services:
             - overlay                  
 
     pushgateway:
-        image: prom/pushgateway
+        image: prom/pushgateway:v1.4.3
         ports:
             - "9091:9091"                                
         deploy:
@@ -25,7 +25,7 @@ services:
             - overlay                
 
     grafana:
-        image: grafana/grafana
+        image: grafana/grafana:9.1.0-ubuntu
         ports:
             - "3000:3000"    
         volumes:
