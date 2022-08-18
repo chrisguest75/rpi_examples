@@ -9,6 +9,8 @@ python-json-logger = "*"
 requests = "*"
 pyyaml = "*"
 ifaddr = "*"
+rainbowhat = "*"
+smbus = "*"
 
 [dev-packages]
 flake8 = "*"
