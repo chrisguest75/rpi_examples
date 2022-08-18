@@ -33,7 +33,8 @@ docker build -t temperature .
 # run docker container
 docker run -it temperature python3 -u ./main.py --prometheus "http://host.docker.internal:8080" --plugin "plugin_random" --nic "eth0"
 
-docker run -it temperature python3 -u ./main.py --prometheus "http://192.168.1.222:9091" --plugin "plugin_rainbowhat" --nic "eth0"
+# ATM --privileged is required.  
+docker run -it --privileged temperature python3 -u ./main.py --prometheus "http://192.168.1.222:9091" --plugin "plugin_rainbowhat" --nic "eth0"
 ```
 
 Build target arm64  

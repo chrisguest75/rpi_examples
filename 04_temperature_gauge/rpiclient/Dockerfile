@@ -7,10 +7,10 @@ FROM python:3.10.6-bullseye
 
 RUN pip install pipenv
 
-ARG USERID=1000
-ARG GROUPID=1000
-RUN addgroup --system --gid $GROUPID appuser
-RUN adduser --system --uid $USERID --gid $GROUPID appuser
+# ARG USERID=1000
+# ARG GROUPID=1000
+# RUN addgroup --system --gid $GROUPID appuser
+# RUN adduser --system --uid $USERID --gid $GROUPID appuser
 
 WORKDIR /workbench
 COPY ./logging_config.yaml /workbench/
@@ -26,6 +26,6 @@ ENV SERVER_URL="http://0.0.0.0:8000/api"
 ENV DEBUGGER=False
 ENV WAIT=False
 
-USER appuser
+# USER appuser
 EXPOSE 8080
 CMD ["python3", "-u", "./main.py"]
