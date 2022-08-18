@@ -12,8 +12,16 @@ sudo sh get-docker.sh
 ```
 
 ```sh
-sudo usermod -aG docker Pi
+# add user to group
+sudo usermod -aG docker pi
+
+# requires a reboot
+shutdown -r now
+
+# test installation
 docker version
 docker info
 docker run hello-world
 ```
+
+## Resources
