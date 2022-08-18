@@ -1,5 +1,10 @@
 FROM python:3.10.6-bullseye
 
+# RUN apt-get update \
+#         && apt-get --no-install-recommends install python3-smbus -y \ 
+#         && apt-get clean \
+#         && rm -rf /var/lib/apt/lists/*
+
 RUN pip install pipenv
 
 ARG USERID=1000

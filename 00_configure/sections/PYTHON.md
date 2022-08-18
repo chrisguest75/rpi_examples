@@ -25,12 +25,22 @@ eval "$(pyenv init -)"
 # list versions
 pyenv install --list
 
-# works (requires my 4gb pi)
+# both work (requires my 4gb pi)
 pyenv install 3.8.13
-
-https://github.com/pyenv/pyenv/issues/1621
 pyenv install 3.10.6
 ```
+
+## Configure
+
+```sh
+pyenv local 3.10.6
+pyenv which python
+
+# not sure about the sudo requirement here
+sudo pip install pipenv
+
+```
+
 
 ## Resources
 

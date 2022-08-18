@@ -2,6 +2,10 @@
 
 Create a client that uses RPI unicornhat and sends data to prometheus.
 
+NOTES:  
+
+* You'll need to ensure the `i2c` interface is enabled ```sudo raspi-config```  
+
 ## Start
 
 ```sh
@@ -14,6 +18,8 @@ python ./main.py --prometheus "http://0.0.0.0:8080"
 python ./main.py --prometheus "http://0.0.0.0:8080" --plugin "plugin_random" --nic "en0"
 python ./main.py --prometheus "http://0.0.0.0:8080" --plugin "plugin_rainbo
 what"
+python ./main.py --prometheus "http://192.168.1.222:9091" --plugin "plugin_rainbowhat"
+
 ```
 
 ## Docker
@@ -27,7 +33,7 @@ docker build -t temperature .
 # run docker container
 docker run -it temperature python3 -u ./main.py --prometheus "http://host.docker.internal:8080" --plugin "plugin_random" --nic "eth0"
 
-docker run -it temperature python3 -u ./main.py --prometheus "http://192.168.1.222:9090" --plugin "plugin_rainbowhat" --nic "eth0"
+docker run -it temperature python3 -u ./main.py --prometheus "http://192.168.1.222:9091" --plugin "plugin_rainbowhat" --nic "eth0"
 ```
 
 Build target arm64  
